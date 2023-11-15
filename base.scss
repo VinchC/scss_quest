@@ -1,0 +1,23 @@
+@mixin ring ($size, $color) {
+    width: $size;    
+    height: $size;
+    border-radius: 50%;
+    border: $size/10 solid $color;
+    box-shadow: $size/5 $size/5 $size/5 darken($color,10);
+}
+
+.myRingTest {
+    @include ring(10px, yellow);
+}
+
+$numberOfRings: 6;
+$coeff: 5;
+
+@for $i from 1 through $numberOfRings {
+    .list:#{$i} {
+        $relativeSize: $size + ($i*$coeff);
+        margin: -20px;
+        width: $relativeSize;
+        height: $relativeSize;
+    }
+}
